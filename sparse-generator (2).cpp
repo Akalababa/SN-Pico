@@ -4,7 +4,7 @@
 int main() 
 {
 	FILE *file;
-	file = fopen("pol2_NBn.h", "w");
+	file = fopen("pol2_NB.h", "w");
     if (file == NULL) 
 	{
         perror("Error opening file");
@@ -93,7 +93,7 @@ int main()
     fprintf(file,"\n");
 
     // Print rs array and calculate trs array
-    fprintf(file,"static int rs[%d][3] = {\n", kr);
+    fprintf(file,"static int rs[%d][2] = {\n", kr);
     t = 0; // Reset t for rs
     count = 0;
     for (i = 0; i < n; i++) 
@@ -102,7 +102,7 @@ int main()
         for (j = 0; j < n; j++)
             if (R[i][j] != 0) 
 			{
-                fprintf(file,"{%d, %d, %d}%s\n", i, j, R[i][j], (count == kr - 1) ? "};" : ",");
+                fprintf(file,"{%d, %d}%s\n", j, R[i][j], (count == kr - 1) ? "};" : ",");
                 t++;
                 count++;
             }
@@ -131,20 +131,20 @@ int main()
 			sum = 0;
 			for(j = 0; j < n; j++)
 			{
-				sum += R[j][i]; //ÇóiÁÐºÍ 
+				sum += R[j][i]; //æ±‚iåˆ—å’Œ 
 			}
-			if(sum == 0)         //iÁÐºÍÎª0£¬ÒâÎ¶×Å´ËÊ±Ã»ÓÐ±Èti¸ü¸ßÓÅÏÈ¼¶µÄÇ¨ÒÆ 
+			if(sum == 0)         //iåˆ—å’Œä¸º0ï¼Œæ„å‘³ç€æ­¤æ—¶æ²¡æœ‰æ¯”tiæ›´é«˜ä¼˜å…ˆçº§çš„è¿ç§» 
 			{
 				for(j = 0; j < k; j++)
 				{
-					if(i != vector[j])  //ÅÐ¶Ïµ±Ç°vectorÀïÊÇ·ñÒÑÓÐ¸ÃÇ¨ÒÆÐòºÅ 
+					if(i != vector[j])  //åˆ¤æ–­å½“å‰vectoré‡Œæ˜¯å¦å·²æœ‰è¯¥è¿ç§»åºå· 
 						continue;
 					else
 						break;
 				}	
 				if(j == k)
 				{
-					vector[k] = i;  //Ã»ÓÐ¾Í´æÈë 
+					vector[k] = i;  //æ²¡æœ‰å°±å­˜å…¥ 
 					k++;
 				}	
 			}
@@ -152,13 +152,13 @@ int main()
 		while(l<k)
 		{
 			for(j = 0; j < n; j++)
-				R[vector[l]][j] = 0;  //´æÈëºó½«iÐÐËùÓÐÔªËØÖÃÎª0 ÏÔÊ¾³öÏÂÒ»¼¶ÓÅÏÈ¼¶
+				R[vector[l]][j] = 0;  //å­˜å…¥åŽå°†iè¡Œæ‰€æœ‰å…ƒç´ ç½®ä¸º0 æ˜¾ç¤ºå‡ºä¸‹ä¸€çº§ä¼˜å…ˆçº§
 			l++;
 		}
 		l = k;	
 	}
 	
- 	// ´òÓ¡ÅÅÐòºóµÄÓÅÏÈ¼¶
+ 	// æ‰“å°æŽ’åºåŽçš„ä¼˜å…ˆçº§
     fprintf(file, "static int vector[%d] = {", n);
     for (int i = 0; i < n; i++)
     {
