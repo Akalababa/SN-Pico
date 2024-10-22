@@ -6,7 +6,7 @@ SN-Pico
 - [Compatibility](#Compatibility)
 - [Usage-instructions](#Usage-instructions)
 - [Content](#Content)
-- [Sicw.hfile](#Sicw.hfile)
+- [Sicw.h-file](#Sicw.h-file)
 - [References](#References)
 
 Compatibility:
