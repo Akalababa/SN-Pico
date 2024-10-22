@@ -28,13 +28,13 @@ void print_vect(int *x, int d1) {
 }
 
 int find_value(int matrix[][2], int start, int end, int target) {
-    // ÏßĞÔ²éÕÒ£¬ÔÚ matrix µÄ [start, end) Çø¼ä²éÕÒ target
+    // çº¿æ€§æŸ¥æ‰¾ï¼Œåœ¨ matrix çš„ [start, end) åŒºé—´æŸ¥æ‰¾ target
     for (int i = start; i < end; i++) {
         if (matrix[i][0] == target) {
-            return matrix[i][1];  // ÕÒµ½Ä¿±ê£¬·µ»ØÖµ
+            return matrix[i][1];  // æ‰¾åˆ°ç›®æ ‡ï¼Œè¿”å›å€¼
         }
     }
-    return 0;  // Èç¹ûÃ»ÕÒµ½£¬·µ»Ø 0
+    return 0;  // å¦‚æœæ²¡æ‰¾åˆ°ï¼Œè¿”å› 0
 }
 
 int main() {
@@ -44,47 +44,47 @@ int main() {
     
     
     while(true) {  
-        // ²éÕÒÏÂÒ»¸ö¿ÉÒÔ´¥·¢µÄ±äÇ¨²¢¸üĞÂ mu
+        // æŸ¥æ‰¾ä¸‹ä¸€ä¸ªå¯ä»¥è§¦å‘çš„å˜è¿å¹¶æ›´æ–° mu
         int fire = -1;
         for (int idx = 0; idx < n; idx++) {
             int tt = v_per[idx];
-            y[tt] = INT_MAX;  // ³õÊ¼»¯ y[tt] ÎªÒ»¸öºÜ´óµÄÖµ
+            y[tt] = INT_MAX;  // åˆå§‹åŒ– y[tt] ä¸ºä¸€ä¸ªå¾ˆå¤§çš„å€¼
 
-            // ¸ù¾İ bs ¾ØÕó¼ÆËã y[tt]
+            // æ ¹æ® bs çŸ©é˜µè®¡ç®— y[tt]
             for (int i = tbs[tt]; i < (tt < n - 1 ? tbs[tt + 1] : KB); i++) {
-                int pb = bs[i][0];  // »ñÈ¡µ±Ç°¿âËùË÷Òı
-                int wb = bs[i][1];  // »ñÈ¡È¨ÖØÖµ
+                int pb = bs[i][0];  // è·å–å½“å‰åº“æ‰€ç´¢å¼•
+                int wb = bs[i][1];  // è·å–æƒé‡å€¼
 
                 int yij = (wb > 1) ? mu[pb] / (wb - 1) : (wb == 1) ? ((mu[pb] > 0) ? 0 : INT_MAX) : INT_MAX;
-                y[tt] = std::min(y[tt], yij);   // ¸üĞÂ y[tt]
+                y[tt] = std::min(y[tt], yij);   // æ›´æ–° y[tt]
             }
             if (y[tt] > 0) {
-                fire = tt;  // ÕÒµ½¿É´¥·¢µÄ±äÇ¨
+                fire = tt;  // æ‰¾åˆ°å¯è§¦å‘çš„å˜è¿
                 int yy = y[fire];
-                //printf("Triggering transition %d with y[%d] = %d\n", trigger_tt, trigger_tt, yy);  // µ÷ÊÔÊä³ö
+                //printf("Triggering transition %d with y[%d] = %d\n", trigger_tt, trigger_tt, yy);  // è°ƒè¯•è¾“å‡º
 
-                // ¸üĞÂ mu µÄÖµ
+                // æ›´æ–° mu çš„å€¼
                 for (int i = 0; i < m; i++) {
 					int b_value = find_value(bs, tbs[fire], (fire < n - 1 ? tbs[fire + 1] : KB), i);
                     int d_value = find_value(ds, tds[fire], (fire < n - 1 ? tds[fire + 1] : KD), i);
-                    // ¸üĞÂ mu Öµ
+                    // æ›´æ–° mu å€¼
                     mu[i] = mu[i] - ((b_value > 1) ? yy * (b_value - 1) : 0) + yy * d_value;
                 }
 				
-                break;  // ÕÒµ½²¢´¦ÀíÁË¿É´¥·¢µÄ±äÇ¨£¬Ìø³öÑ­»·
+                break;  // æ‰¾åˆ°å¹¶å¤„ç†äº†å¯è§¦å‘çš„å˜è¿ï¼Œè·³å‡ºå¾ªç¯
             }
         }
 
-        // Èç¹ûÃ»ÓĞ¿É´¥·¢µÄ±äÇ¨£¬½áÊøÑ­»·
+        // å¦‚æœæ²¡æœ‰å¯è§¦å‘çš„å˜è¿ï¼Œç»“æŸå¾ªç¯
         if (fire == -1) {
-            break;  // ÕÒ²»µ½¿É´¥·¢µÄ±äÇ¨£¬ÍË³öÑ­»·
+            break;  // æ‰¾ä¸åˆ°å¯è§¦å‘çš„å˜è¿ï¼Œé€€å‡ºå¾ªç¯
         }
 
-        k++;  // ¼ÆÊı´¥·¢µÄ±äÇ¨´ÎÊı
+        k++;  // è®¡æ•°è§¦å‘çš„å˜è¿æ¬¡æ•°
     }
 	end_time = magma_wtime();
 	
-    // Êä³ö×îÖÕ½á¹û
+    // è¾“å‡ºæœ€ç»ˆç»“æœ
     printf("Final mu: ");
     print_vect(mu, m);
     printf("Final y: ");
