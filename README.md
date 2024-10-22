@@ -36,6 +36,19 @@ Compatibility:
 
 Content:
 -----
+dense-Arduino - Arduino sketch for generic SN machine with dense matrix example .h files
+
+dense-desktop - C file for generic SN machine with dense matrix example .h files
+
+sicw-Arduino - Arduino sketch for generic SN machine with specialized Indexed Column-Wise Sparse Matrix (sicw) example .h files
+
+sicw-desktop - C file for generic SN machine with specialized Indexed Column-Wise Sparse Matrix (sicw) example .h files
+
+input - examples of dense matrices and specialized Indexed Column-Wise Sparse matrices(sicw) 
+
+generator - generator for converting dense matrices to specialized Indexed Column-Wise Sparse matrices(sicw)
+
+
 
 
 
