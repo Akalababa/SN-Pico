@@ -35,77 +35,77 @@ Usage-instructions:
 
 We list references to components in the "Compatibility" section.
 
-1.Use `Tina` `nd` as a graphical editor and its labels with special syntax (see "Transition Substitution Label" section) to specify the transition substitution of `HSN`.
+-Use `Tina` `nd` as a graphical editor and its labels with special syntax (see "Transition Substitution Label" section) to specify the transition substitution of `HSN`.
    
-2.Use `NDRtoSN` to convert the `NDR` file from `Tina` into `HSN` or `LSN`.
+-Use `NDRtoSN` to convert the `NDR` file from `Tina` into `HSN` or `LSN`.
    
-3.Use `HSNtoLSN` to compile and link the HSN file with the mentioned LSN files into a single `LSN` file.
+-Use `HSNtoLSN` to compile and link the HSN file with the mentioned LSN files into a single `LSN` file.
    
-4.Run the `LSN` file on `SN-VM` or `SN-VM-GPU`.
+-Run the `LSN` file on `SN-VM` or `SN-VM-GPU`.
 
 > Desktop:
 
-1.Compile and run `generator.c` to convert `dense-matrix.h` in input directory to the corresponding `sicw-matrix.h`.
+-Compile and run `generator.c` to convert `dense-matrix.h` in input directory to the corresponding `sicw-matrix.h`.
 
-2.Choose SN machine by using different .h files(dense/sicw)
+-Choose SN machine by using different .h files(dense/sicw)
 
-3.Open `dev-C` or other IDE
+-Open `dev-C` or other IDE
 
-4.Compile and run `test.c`
+-Compile and run `test.c`
 
 > Arduino:
 
-1.Run `generator.c` to convert `dense-matrix.h` in input directory to the corresponding `sicw-matrix.h`.
+-Run `generator.c` to convert `dense-matrix.h` in input directory to the corresponding `sicw-matrix.h`.
 
-2.Choose SN machine by using different .h files
+-Choose SN machine by using different .h files
 
-3.Open sketch sna.ino in `Arduino IDE`
+-Open sketch sna.ino in `Arduino IDE`
 
-4.Compile and upload to `microcontroller`
+-Compile and upload to `microcontroller`
 
-5.Test microcontroller work
+-Test microcontroller work
 
-6.Debug controlling debug info printed on serial interface
+-Debug controlling debug info printed on serial interface
 
 Content:
 -----
-dense-Arduino - Arduino sketch for generic SN machine with dense matrix example .h files
+`dense-Arduino` - Arduino sketch for generic SN machine with dense matrix example .h files
 
-dense-desktop - C file for generic SN machine with dense matrix example .h files
+`dense-desktop` - C file for generic SN machine with dense matrix example .h files
 
-sicw-Arduino - Arduino sketch for generic SN machine with specialized Indexed Column-Wise Sparse Matrix (sicw) example .h files
+`sicw-Arduino` - Arduino sketch for generic SN machine with specialized Indexed Column-Wise Sparse Matrix (sicw) example .h files
 
-sicw-desktop - C file for generic SN machine with specialized Indexed Column-Wise Sparse Matrix (sicw) example .h files
+`sicw-desktop` - C file for generic SN machine with specialized Indexed Column-Wise Sparse Matrix (sicw) example .h files
 
-input - examples of dense matrices and specialized Indexed Column-Wise Sparse matrices(sicw) 
+`input` - examples of dense matrices and specialized Indexed Column-Wise Sparse matrices(sicw) 
 
-generator - generator for converting dense matrices to specialized Indexed Column-Wise Sparse matrices(sicw)
+`generator` - generator for converting dense matrices to specialized Indexed Column-Wise Sparse matrices(sicw)
 
 Sicw.h-file:
 -----
 SN is specified as 5 numbers, 2 matrices, 4 vector:
 
-#define m - number of places
+`#define m` - number of places
 
-#define n - number of transitions
+`#define n` - number of transitions
 
-#define KB - number of non-zero elements in the dense matrix b
+`#define KB` - number of non-zero elements in the dense matrix b
 
-#define KD - number of non-zero elements in the dense matrix d
+`#define KD` - number of non-zero elements in the dense matrix d
 
-#define KR - number of non-zero elements in the dense matrix r
+`#define KR` - number of non-zero elements in the dense matrix r
 
-static int bs[KB][2] - non-zero elements' row-index and value in b matrix of imcoming arcs of transitions
+`static int bs[KB][2]` - non-zero elements' row-index and value in b matrix of imcoming arcs of transitions
 
-static int ds[KD][2] - non-zero elements' row-index and value in d matrix of outgoing arcs of transitions
+`static int ds[KD][2]` - non-zero elements' row-index and value in d matrix of outgoing arcs of transitions
 
-static int tbs[n+1] - vector of index of the first non-zero element in each column of the b matrix
+`static int tbs[n+1]` - vector of index of the first non-zero element in each column of the b matrix
 
-static int tds[n+1] - vector of index of the first non-zero element in each column of the d matrix
+`static int tds[n+1]` - vector of index of the first non-zero element in each column of the d matrix
 
-static int v_per[n] - vector of priority sequence of transitions
+`static int v_per[n]` - vector of priority sequence of transitions
 
-static int mu[m] - vector of initial marking
+`static int mu[m]` - vector of initial marking
 
 References:
 ----
