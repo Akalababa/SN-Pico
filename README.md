@@ -36,7 +36,27 @@ Compatibility:
 
 Usage instructions:
 -----
+Desktop:
+> 1.Compile and run `generator.c` to convert `dense-matrix.h` in input directory to the corresponding `sicw-matrix.h`.
 
+> 2.Choose SN machine by using different .h files(dense/sicw)
+
+> 3.Open `dev-C` or other IDE
+
+> 4.Compile and run `test.c`
+
+Arduino:
+> 1.Run `generator.c` to convert `dense-matrix.h` in input directory to the corresponding `sicw-matrix.h`.
+
+> 2.Choose SN machine by using different .h files
+
+> 3.Open sketch sna.ino in `Arduino IDE`
+
+> 4.Compile and upload to `microcontroller`
+
+> 5.Test microcontroller work
+
+> 6.Debug controlling debug info printed on serial interface
 
 Content:
 -----
@@ -52,9 +72,9 @@ input - examples of dense matrices and specialized Indexed Column-Wise Sparse ma
 
 generator - generator for converting dense matrices to specialized Indexed Column-Wise Sparse matrices(sicw)
 
-sicw specification - h file:
+SN specification - h file:
 -----
-sicw is specified as 5 numbers, 2 matrices, 4 vector:
+SN is specified as 5 numbers, 2 matrices, 4 vector:
 
 #define m - number of places
 
@@ -86,7 +106,13 @@ References:
 
 3.TIme petri Net Analyzer, Release 3.8.0, May 05, 2024 (Runs Sleptsov nets). https://projects.laas.fr/tina/download.php
 
-4.
+4.Zaitsev D.A. Universal Sleptsov Net, International Journal of Computer Mathematics, 94(12) 2017, 2396-2408. http://dx.doi.org/10.1080/00207160.2017.1283410
+
+5.Tatiana R. Shmeleva, Jan W. Owsiński, Abdulmalik Ahmad Lawan (2021) Deep learning on Sleptsov nets, International Journal of Parallel, Emergent and Distributed Systems, 36:6, 535-548, https://doi.org/10.1080/17445760.2021.1945055
+
+6.Qing Zhang, Ding Liu, Yifan Hou, Sleptsov Net Processor, International Conference ”Problems of Infocommunications. Science and Technology” (PICST2022), 10-12 October, 2022, Kyiv, Ukraine.
+
+7.Hongfei Zhao, Ding Liu, Yifan Hou, Compiler and Linker of Sleptsov Net Program,International Conference ”Problems of Infocommunications. Science and Technology” (PICST2022), 10-12 October, 2022, Kyiv, Ukraine.
 
 
 
